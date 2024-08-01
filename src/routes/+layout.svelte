@@ -2,4 +2,6 @@
     import "../app.css"
 </script>
 
-<slot />
+<custom-theming-element data-theme="skeleton" class="light">
+    <slot />
+</custom-theming-element>
