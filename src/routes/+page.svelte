@@ -1,4 +1,2 @@
-<div class="card m-4 p-4">
-    <div class="text-3xl font-bold underline">Welcome to SvelteKit</div>
-    <div>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</div>
-</div>
+<div class="text-4xl text-center">Raizuma - So schnell wie der Blitz</div>
+<div class="text-xl text-center">Das Team der Ewigkeit und deutschen Übersetzungen</div>
