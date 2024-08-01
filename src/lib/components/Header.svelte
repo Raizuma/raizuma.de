@@ -9,7 +9,9 @@
 
 <div class="w-full h-14 bg-surface-100-800-token px-4">
     <div class="mx-auto w-full max-w-screen-lg h-full flex justify-between items-center">
-        <button on:click={() => goto("/")} class="text-2xl font-bold">Raizuma</button>
+        <button on:click={() => goto("/")}>
+            <enhanced:img src="$images/raizuma-logo.png" alt="Raizuma Logo" class="w-40 h-12" />
+        </button>
         <div class="text-xl">
             {#key $page.url.pathname}
                 <button on:click={() => goto("/test")} class="{getLinkClasses("/test")}">Test</button>
