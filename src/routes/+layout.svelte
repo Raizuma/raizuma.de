@@ -3,9 +3,11 @@
     import "@fontsource/nunito"
     import Header from "$components/Header.svelte"
     import PageTransition from "$components/PageTransition.svelte"
+    import { darkmode } from "$stores/darkmode"
+    import { theme } from "$stores/theme"
 </script>
 
-<custom-theming-element data-theme="skeleton" class="dark">
+<custom-theming-element data-theme="{$theme}" class="{$darkmode ? 'dark' : 'light'}">
     <div class="top-0 left-0 w-screen h-screen text-surface-900-50-token bg-surface-50-900-token overflow-x-hidden overflow-y-scroll absolute">
         <Header />
         <PageTransition>

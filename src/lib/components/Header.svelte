@@ -15,6 +15,7 @@
         <div class="text-xl">
             {#key $page.url.pathname}
                 <button on:click={() => goto("/test")} class="{getLinkClasses("/test")}">Test</button>
+                <button on:click={() => goto("/yw4")} class="{getLinkClasses("/test")}">YW4</button>
             {/key}
         </div>
     </div>
