@@ -16,11 +16,13 @@
                         <div class="w-full text-center">This website is currently under construction.</div>
                     </div>
                 </div>
-                <div class="mx-auto w-full max-w-screen-lg bg-surface-100-800-token rounded-xl p-4">
-                    <slot />
-                </div>
-                <div class="mt-3 w-full h-auto flex justify-end items-center">
-                    <div>&copy; 2024 by Raizuma. All rights reserved.</div>
+                <div class="mx-auto w-full max-w-screen-lg">
+                    <div class="bg-surface-100-800-token rounded-xl p-4">
+                        <slot />
+                    </div>
+                    <div class="mt-3 w-full h-auto flex justify-end items-center">
+                        <div>&copy; 2024 by Raizuma. All rights reserved.</div>
+                    </div>
                 </div>
             </div>
         </PageTransition>
