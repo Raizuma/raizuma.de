@@ -1,7 +1,7 @@
 # Table of Content
 1. Setup
    1. Base Setup
-   2. evelopment Setup
+   2. Development Setup
    3. Production Setup
 2. Used Technologies/Libraries
 
