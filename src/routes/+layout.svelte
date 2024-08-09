@@ -12,12 +12,6 @@
         <Header />
         <PageTransition>
             <div class="w-full h-auto p-4">
-                <div class="alert variant-filled-warning mx-auto mb-4 w-96">
-                    <div class="alert-message w-full">
-                        <div class="w-full text-xl font-bold text-center">Warning</div>
-                        <div class="w-full text-center">This website is currently under construction.</div>
-                    </div>
-                </div>
                 <div class="mx-auto w-full max-w-screen-lg">
                     <div class="bg-surface-100-800-token rounded-xl p-4">
                         <slot />

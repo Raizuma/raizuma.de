@@ -14,8 +14,10 @@
         </button>
         <div class="text-xl">
             {#key $page.url.pathname}
-                <button on:click={() => goto("/test")} class="{getLinkClasses("/test")}">Test</button>
-                <button on:click={() => goto("/yw4")} class="{getLinkClasses("/test")}">YW4</button>
+                <button on:click={() => goto("/")} class="{getLinkClasses("/")}">Home</button>
+                <button on:click={() => goto("/projects")} class="{getLinkClasses("/projects")}">Projekte</button>
+                <button on:click={() => goto("/contact")} class="{getLinkClasses("/contact")}">Kontakt</button>
+                <button on:click={() => goto("/about")} class="{getLinkClasses("/about")}">Über uns</button>
             {/key}
         </div>
     </div>
