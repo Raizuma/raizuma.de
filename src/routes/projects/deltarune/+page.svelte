@@ -1,38 +1,34 @@
-<script>
-    function clapaccord(elementid) {
-        const nav = document.getElementById(elementid)
-        if (nav?.classList.contains('hidden')) {
-            nav?.classList.remove('hidden')
-        } else {
-            nav?.classList.add('hidden')
-        }
-    }
-</script>
 
 <div class="h-auto w-auto text-left md:mx-16">
     <!--Head-->
     <div class="flex h-auto w-auto items-start justify-center">
-        <div class="flex items-center justify-center text-center text-2xl leading-[64px] md:h-64 md:w-1/2 md:text-6xl">Deltarune</div>
-        <div class="flex w-1/2 items-center justify-center md:h-64">
-            <enhanced:img src="$images/deltarune.png" alt="Deltarune" style="width: 200px; border-radius: 10%;" />
-        </div>
+        <div class="flex items-center justify-center text-center text-2xl py-5 md:w-1/2 md:text-5xl">Deltarune</div>
     </div>
     <!--Beschreibung-->
     <div class="text-1xl mx-8 md:mx-16 lg:text-2xl">
         <div class="flex w-max items-start justify-center rounded-xl bg-slate-800/75 py-3">
             <a class="text-1xl mx-8 hover:text-sky-400/75 md:mx-16 lg:text-2xl" href="https://mega.nz/file/68UEmY6K#Tc44g9qZNLzEr1zKM6MUUutbGjwCelytO_d2kE8b4CY">Download</a>
         </div>
-        Entwickler: Toby Fox<br />
-        Publisher: Toby Fox<br /><br />
+        <div> 
+            <div class="flex h-auto w-auto items-start justify-center">
+                <div>
+                    Entwickler: Toby Fox<br />
+                    Publisher: Toby Fox<br /><br />
+            
+                    Veröffentlicht: 31 Oktober 2018<br />
+                    Originalsprache: Englisch<br />
+                    Altersfreigabe: USK 6<br /><br /> 
+                </div>
+                <div class="flex w-1/2 items-center justify-center md:h-63">
+                    <enhanced:img src="$images/deltarune.png" alt="Deltarune" style="width: 200px; border-radius: 10%;" />
+                </div>
+            </div>
 
-        Veröffentlicht: 31 Oktober 2018<br />
-        Originalsprache: Englisch<br />
-        Altersfreigabe: USK 6<br /><br />
-
-        Erlebe in Deltarune, einem 2D-Pixel-RPG von Toby Fox, die Geschichte von Kris, einem jungen Menschen, welcher plötzlich zusammen mit Schulmobberin Susie in eine finsteren Welt stürzt und nun einen Weg nach Hause suchen.
-        Ähnlich wie schon Undertale erlebst du in diesem Spiel einen facettenreichen Cast an verschiedenen Charakteren.
-        Bekämpfe Gegner, oder Freunde dich mit ihnen an, in einem Bullet-Hell ähnlichen Kampfstil.
-        Ob deine Entscheidungen einen Wert haben werden?
+            Erlebe in Deltarune, einem 2D-Pixel-RPG von Toby Fox, die Geschichte von Kris, einem jungen Menschen, welcher plötzlich zusammen mit Schulmobberin Susie in eine finsteren Welt stürzt und nun einen Weg nach Hause suchen.
+            Ähnlich wie schon Undertale erlebst du in diesem Spiel einen facettenreichen Cast an verschiedenen Charakteren.
+            Bekämpfe Gegner, oder Freunde dich mit ihnen an, in einem Bullet-Hell ähnlichen Kampfstil.
+            Ob deine Entscheidungen einen Wert haben werden?
+        </div>
     </div>
 </div>
 <!--Patchnote-->

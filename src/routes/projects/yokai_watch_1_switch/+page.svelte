@@ -1,37 +1,34 @@
-<script>
-    function clapaccord(elementid) {
-        const nav = document.getElementById(elementid)
-        if (nav?.classList.contains('hidden')) {
-            nav?.classList.remove('hidden')
-        } else {
-            nav?.classList.add('hidden')
-        }
-    }
-</script>
+
 
 <div class="h-auto w-auto text-left md:mx-16">
     <!--Head-->
     <div class="flex h-auto w-auto items-start justify-center">
-        <div class="flex items-center justify-center text-center text-2xl leading-[64px] md:h-64 md:w-1/2 md:text-6xl">Yokai Watch 1 (Switch)</div>
-        <div class="flex w-1/2 items-center justify-center md:h-64">
-            <enhanced:img src="$images/yokai-watch-1-icon.png" alt="Yokai-Watch-1" style="width: 200px; border-radius: 10%;" />
-        </div>
+        <div class="flex items-center justify-center text-center text-2xl py-5 md:w-1/2 md:text-5xl">Yokai Watch 1 (Switch)</div>
     </div>
     <!--Beschreibung-->
     <div class="text-1xl mx-8 md:mx-16 lg:text-2xl">
-        <div class="flex w-max items-start justify-center rounded-xl bg-slate-800/75 py-3">
+        <div class="flex items-center justify-center text-center w-max items-start justify-center rounded-xl bg-slate-800/75 py-3">
             <a class="text-1xl mx-8 hover:text-sky-400/75 md:mx-16 lg:text-2xl" href="https://gbatemp.net/threads/wip-yo-kai-watch-1-deutsch-version.619087/">Download</a>
         </div>
-        Entwickler: Level-5<br />
-        Publisher: Level-5 und Nintendo<br /><br />
-
-        Veröffentlicht: 10 Oktober 2019 (Switch)<br />
-        Originalsprache: Japanisch<br />
-        Altersfreigabe: USK 6<br /><br />
-
-        In diesem Rollenspiel aus dem Hause Level-5, erlebst du die Geschichte von Nathan Adams, oder Katie Forester durch deren Reise durch die Welt der Yo-kai. Auf dieser Reise wirst du verschiedene neue Freunde finden, die nicht alle menschlich zu sein
-        scheinen. Freunde dich mit so vielen Yo-kai wie möglich an, kämpfe mit ihnen gegen andere Yo-kai und löse das Geheimnis der Yo-kai World. Erlebe mit der inoffiziellen deutschen Übersetzung von Raizuma das Remake des klassichen 3DS von Yo-kai Watch
-        1 noch einmal neu kennen!
+        <div> 
+            <div class="flex h-auto w-auto items-start justify-center">
+                <div>
+                    Entwickler: Level-5<br />
+                    Publisher: Level-5 und Nintendo<br /><br />
+            
+                    Veröffentlicht: 10 Oktober 2019 (Switch)<br />
+                    Originalsprache: Japanisch<br />
+                    Altersfreigabe: USK 6<br /><br />
+                </div>
+                <div class="flex w-1/2 items-center justify-center md:h-63">
+                    <enhanced:img src="$images/yokai-watch-1-icon.png" alt="Yokai-Watch-1" style="width: 200px; border-radius: 10%;" />
+                </div>
+            </div>
+    
+            In diesem Rollenspiel aus dem Hause Level-5, erlebst du die Geschichte von Nathan Adams, oder Katie Forester durch deren Reise durch die Welt der Yo-kai. Auf dieser Reise wirst du verschiedene neue Freunde finden, die nicht alle menschlich zu sein
+            scheinen. Freunde dich mit so vielen Yo-kai wie möglich an, kämpfe mit ihnen gegen andere Yo-kai und löse das Geheimnis der Yo-kai World. Erlebe mit der inoffiziellen deutschen Übersetzung von Raizuma das Remake des klassichen 3DS von Yo-kai Watch
+            1 noch einmal neu kennen!
+        </div>
     </div>
 </div>
 
