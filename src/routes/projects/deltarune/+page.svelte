@@ -24,9 +24,9 @@
                 </div>
             </div>
 
-            Erlebe in Deltarune, einem 2D-Pixel-RPG von Toby Fox, die Geschichte von Kris, einem jungen Menschen, welcher plötzlich zusammen mit Schulmobberin Susie in eine finsteren Welt stürzt und nun einen Weg nach Hause suchen.
+            Erlebe in Deltarune, einem 2D-Pixel-RPG von Toby Fox, die Geschichte von Kris, einem jungen Menschen, welcher plötzlich zusammen mit Schulmobberin Susie in eine finstere Welt stürzt und nun einen Weg nach Hause sucht.
             Ähnlich wie schon Undertale erlebst du in diesem Spiel einen facettenreichen Cast an verschiedenen Charakteren.
-            Bekämpfe Gegner, oder Freunde dich mit ihnen an, in einem Bullet-Hell ähnlichen Kampfstil.
+            Bekämpfe Gegner, oder freunde dich mit ihnen an, in einem Bullet-Hell ähnlichen Kampfstil.
             Ob deine Entscheidungen einen Wert haben werden?
         </div>
     </div>

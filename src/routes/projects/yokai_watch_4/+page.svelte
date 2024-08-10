@@ -24,9 +24,12 @@
                 </div>
             </div>
     
-            In Yo-kai Watch 4++ kannst du die neuste Geschichte von Nathan, Jibanyan, Whisper und co erleben. Triff allseits beliebte und bekannte Charaktere im neuen Gewand und lerne gleichzeitig auch neue Charaktere durch drei verschiedene Zeitlinien.
-            Diesmal kannst du eine Geschichte erlben, die sowohl in Vergangenheit, Gegenwart und Zukunft spielt und dort dich mit neuen Yo-kai anfreunden. Erlebe ein völlig neues aktives Echtzeitkampfsystem, in dem du sowohl die Yo-kai, als auch Menschen
-            selbst frei steuern kannst. Raizuma arbeitet noch aktiv daran, eine gute inoffizielle deutsche Version des Spiels zu ermöglichen! Viel Spaß damit und seid auf weiteren Updates gespannt!
+            In Yo-kai Watch 4++ kannst du die neueste Geschichte von Nathan, Jibanyan, Whisper und Co. erleben.
+            Triff allseits beliebte und bekannte, sowie komplett neue Charaktere mit neuem Design. Das Geschehen
+            spielt sich hierbei sowohl in der Vergangenheit, Gegenwart, als auch in der Zukunft ab. Nutze ein völlig neues,
+            aktives Echtzeitkampfsystem, in dem du sowohl die Yo-kai, als auch die Watcher selbst frei steuern kannst.
+            Im Moment arbeitet Raizuma noch aktiv daran, eine gute, inoffizielle deutsche Version des Spiels zu ermöglichen!
+            Viel Spaß beim Spielen und seid auf weitere Updates gespannt!
         </div>
     </div>
     <!--Patchnote
