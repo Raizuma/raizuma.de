@@ -6,7 +6,9 @@ const theme: Writable<Theme> = writable<Theme>("skeleton")
 
 function getAllThemes(): { name: string, key: string }[] {
     return [
-        { name: "Skeleton", key: "skeleton" }
+        { name: "Skeleton", key: "skeleton" },
+        { name: "Modern", key: "modern" },
+        { name: "Gold Nouveau", key: "gold-nouveau" }
     ]
 }
 
