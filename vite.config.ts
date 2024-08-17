@@ -5,6 +5,7 @@ import { enhancedImages } from "@sveltejs/enhanced-img"
 import mkcert from "vite-plugin-mkcert"
 
 const serverConfig: CommonServerOptions = {
+    // @ts-ignore
     https: true,
     host: "127.0.0.1",
     port: 3000,

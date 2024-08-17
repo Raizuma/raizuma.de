@@ -23,7 +23,7 @@
     </div>
 </div>
 
-<style>
+<style lang="postcss">
     button.active-link {
         @apply mx-4 underline cursor-default;
     }
