@@ -2,12 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-body::-webkit-scrollbar {
-    font-family: "Nunito", sans-serif;
-    display: none;
-}
-
 body {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+    font-family: "Nunito", sans-serif;
 }
