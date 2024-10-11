@@ -5,6 +5,11 @@
     function getLinkClasses(path: string): string {
         return ($page.url.pathname === path) ? "active-link" : "inactive-link"
     }
+
+    import type { PageServerData } from "./$types"
+
+    export let data: PageServerData
+    console.log(data)
 </script>
 
 <div class="mb-4 h-auto w-auto rounded-xl bg-slate-800/90 text-center text-2xl sm:mx-8 md:mx-16 lg:text-4xl">Projekte</div>
@@ -19,3 +24,5 @@
         <enhanced:img src="$images/deltarune.png" alt="Deltarune" style="width: 300px; border-radius: 10%;"/>
     </button>
 </div>
+
+
