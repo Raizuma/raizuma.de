@@ -1,6 +1,13 @@
 <script lang="ts">
     import { page } from "$app/stores"
     import { goto } from "$app/navigation"
+    import { darkmode } from "$stores/darkmode"
+    import { theme, getAllThemes } from "$stores/theme"
+    import { SlideToggle } from "@skeletonlabs/skeleton"
+
+    function themeChangeEvent(event: any) {
+        $theme = event.target.value
+    }
 
     function getLinkClasses(path: string): string {
         return ($page.url.pathname === path) ? "active-link" : "inactive-link"
@@ -20,6 +27,14 @@
                 <button on:click={() => goto("/about")} class="{getLinkClasses("/about")}">Über uns</button>
             {/key}
         </div>
+        <!--
+            <SlideToggle name="slide" bind:checked={$darkmode} />
+            <select class="select" size="3" value="{$theme}" on:change={themeChangeEvent}>
+                {#each getAllThemes() as element}
+                    <option value="{element.key}">{element.name}</option>
+                {/each}
+            </select>
+            -->
     </div>
 </div>
 
