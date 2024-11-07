@@ -13,16 +13,19 @@
     }
 
     let buttonCollapsIconData = arrowUp;
+    let navigationVisibility: HTMLDivElement;
+    let themeVisibility: HTMLDivElement;
+
     function collapsNav(event: any){
         if(buttonCollapsIconData === arrowDown){
             buttonCollapsIconData = arrowUp;
-            document.getElementById("navigation")?.classList.remove("hidden");
-            document.getElementById("themes")?.classList.remove("hidden");
+            navigationVisibility.style.display = "";
+            themeVisibility.style.display = "";
         }
         else{
             buttonCollapsIconData = arrowDown;
-            document.getElementById("navigation")?.classList.add("hidden");
-            document.getElementById("themes")?.classList.add("hidden");
+            navigationVisibility.style.display = "none";
+            themeVisibility.style.display = "none";
         }
     }
 
@@ -31,11 +34,11 @@
     }
 </script>
 
-<div class="w-ful md:h-14 space-y-2 py-2 bg-surface-100-800-token px-4 flex flex-col md:flex-row md:place-content-around items-center">
+<div class="w-ful md:h-14 bg-surface-100-800-token px-4 flex flex-col md:flex-row md:place-content-around items-center">
     <button on:click={() => goto("/")}>
         <enhanced:img src="$images/raizuma-logo.png" alt="Raizuma Logo" class="w-40 h-12" />
     </button>
-    <div id="navigation" class="text-xl flex-col space-y-2 flex md:flex-row md:py-0 md:space-y-0">
+    <div bind:this={themeVisibility} class="text-xl flex-col space-y-3 py-3 flex md:flex-row md:py-0 md:space-y-0">
         {#key $page.url.pathname}
             <button on:click={() => goto("/")} class="{getLinkClasses("/")}">Home</button>
             <button on:click={() => goto("/projects")} class="{getLinkClasses("/projects")}">Projekte</button>
@@ -43,7 +46,7 @@
             <button on:click={() => goto("/about")} class="{getLinkClasses("/about")}">Über uns</button>
         {/key}
     </div>
-    <div id="themes" class="flex row items-center space-x-4">
+    <div bind:this={navigationVisibility} class="flex row items-center py-3 space-x-4">
         <select class="select" value="{$theme}" on:change={themeChangeEvent}>
             {#each getAllThemes() as element}
                 <option value="{element.key}">{element.name}</option>
