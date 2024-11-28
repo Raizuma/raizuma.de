@@ -7,6 +7,7 @@
     import Icon from 'svelte-awesome/components/Icon.svelte'
     import arrowDown from "svelte-awesome/icons/arrowDown";
     import arrowUp from "svelte-awesome/icons/arrowUp";
+    import { onMount } from "svelte";
 
     function themeChangeEvent(event: any) {
         $theme = event.target.value
@@ -16,7 +17,7 @@
     let navigationVisibility: HTMLDivElement;
     let themeVisibility: HTMLDivElement;
 
-    function collapsNav(event: any){
+    function collapsNav(){
         if(buttonCollapsIconData === arrowDown){
             buttonCollapsIconData = arrowUp;
             navigationVisibility.style.display = "";
@@ -28,17 +29,34 @@
             themeVisibility.style.display = "none";
         }
     }
-
+    
     function getLinkClasses(path: string): string {
         return ($page.url.pathname === path) ? "active-link" : "inactive-link"
     }
+
+    function checkArrow(){
+        if(window.innerWidth >= 768 && buttonCollapsIconData === arrowDown){
+            buttonCollapsIconData = arrowUp;
+            navigationVisibility.style.display = "";
+            themeVisibility.style.display = "";
+        }
+    }
+
+    onMount(() => {
+        checkArrow();
+        window.addEventListener('resize', checkArrow);
+
+        return () => {
+        window.removeEventListener('resize', checkArrow);
+        };
+    });
 </script>
 
-<div class="w-ful md:h-14 bg-surface-100-800-token px-4 flex flex-col md:flex-row md:place-content-around items-center">
+<div class="md:h-14 bg-surface-100-800-token px-4 flex flex-col md:flex-row md:place-content-around items-center">
     <button on:click={() => goto("/")}>
         <enhanced:img src="$images/raizuma-logo.png" alt="Raizuma Logo" class="w-40 h-12" />
     </button>
-    <div bind:this={themeVisibility} class="text-xl flex-col space-y-3 py-3 flex md:flex-row md:py-0 md:space-y-0">
+    <div bind:this={themeVisibility} class="text-xl py-3 flex justify-around flex-wrap md:flex-row md:py-0 md:space-y-0">
         {#key $page.url.pathname}
             <button on:click={() => goto("/")} class="{getLinkClasses("/")}">Home</button>
             <button on:click={() => goto("/projects")} class="{getLinkClasses("/projects")}">Projekte</button>
@@ -61,7 +79,7 @@
 
 <style lang="postcss">
     button.active-link {
-        @apply mx-4 cursor-default rounded-xl border px-4 variant-filled-surface;
+        @apply mx-4 cursor-default rounded-xl border px-4  variant-filled-surface;
     }
 
     button.inactive-link {
