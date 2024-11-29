@@ -1,8 +1,6 @@
 <script lang="ts">
     import type { PageServerData } from "./$types"
-
     export let data: PageServerData
-    console.log(data)
 </script>
 
 <div class="h-auto w-auto text-left md:mx-16">
