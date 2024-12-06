@@ -34,14 +34,14 @@
      <div class="flex flex-col gap-5 p-4">
         {#if newsFeed}
             {#each newsFeed as news}
-                <div class="grid grid-cols-[auto_1fr] gap-2">
+                <div class="grid grid-cols-[auto_1fr] w-full gap-2">
                     <Avatar src={news.nimg || ""} width="w-12" />
-                    <div class="card p-4 variant-soft rounded-rl space-y-2 truncate break-words">
+                    <div class="card p-4 variant-soft rounded-rl space-y-2">
                         <header class="flex justify-between items-center">
                             <p class="font-bold">{news.ntitle}</p>
                             <small class="opacity-50">{news.ntimp}</small>
                         </header>
-                        <p>{news.ntext}</p>
+                        <p class="break-all">{news.ntext}</p>
                     </div>
                 </div>
             {/each}
