@@ -1,10 +1,13 @@
 import type { PageServerLoad } from "./$types"
 
-type ProjectData = {
-    projects: Array<any>
+type ProjectDataProjects = {
+    ptitle: string,
+    pname: string,
+    pimg: string,
+    palt: string,
 }
 
-export const load: PageServerLoad = async ({ slug  }): Promise<{ projectData: ProjectData }> => {
+export const load: PageServerLoad = async (): Promise<{ projectData: Array<ProjectDataProjects> }> => {
 
     const response: Response = await fetch(`http://api.raizuma.local:3000/projects/`, {
         method: "GET"
@@ -14,7 +17,7 @@ export const load: PageServerLoad = async ({ slug  }): Promise<{ projectData: Pr
         throw new Error(`Boah, da ist was kaputt: ${response.statusText}`)
     }
 
-    const data: ProjectData = await response.json()
+    const data: Array<ProjectDataProjects> = await response.json()
 
     return {
         projectData: data

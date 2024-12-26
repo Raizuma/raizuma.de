@@ -2,7 +2,6 @@
     import type { PageServerData } from "./$types";
     export let data: PageServerData;
     const contacts = data.contactData;
-    console.log(data);
 </script>
 
 <div class="mx-8 mb-4 h-auto w-auto rounded-xl bg-slate-800/90 text-center text-2xl md:mx-16 lg:text-4xl">Kontakt</div>

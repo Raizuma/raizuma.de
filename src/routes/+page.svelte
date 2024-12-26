@@ -19,7 +19,7 @@
                     <header class="card-header">
                        <enhanced:img src={project.pimg || ""} alt={project.palt} style="width: 210px; border-radius: 10%;" />
                     </header>
-                    <section class="text-5xl p-4 font-bold">{project.ptitle}</section>
+                    <section class="text-5xl p-4 font-bold break-word">{project.ptitle}</section>
                     <footer class="card-footer text-xs">Zuletzt aktualisiert: {project.ptimp}</footer>
                 </a>
             {/each}
