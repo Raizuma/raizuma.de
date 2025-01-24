@@ -1,7 +1,7 @@
 import type { PageServerLoad } from "./$types"
 
 type ProjectDataAbout = {
-    ptext: String
+    ptext: Array<String>
 }
 
 export const load: PageServerLoad = async (): Promise<{ aboutData: ProjectDataAbout}> => {
