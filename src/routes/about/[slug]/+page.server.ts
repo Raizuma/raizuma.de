@@ -1,3 +1,4 @@
+import { redirect } from "@sveltejs/kit";
 import type { PageServerLoad } from "./$types"
 
 type ProjectData = {
@@ -12,15 +13,17 @@ type ProjectData = {
     description: string;
 }
 
-export const load: PageServerLoad = async ({ slug  }): Promise<{ projectData: ProjectData }> => {
-    console.log(slug)
+export const load: PageServerLoad = async ({ params  }): Promise<{ projectData: ProjectData }> => {
+    console.log(params.slug);
+    const slug = params.slug;
 
-    const response: Response = await fetch(`http://api.raizuma.local:3000/projects/${slug}`, {
+    const response: Response = await fetch(`http://api.raizuma.local:3000/about/${slug}`, {
         method: "GET"
     })
 
     if (!response.ok) {
-        throw new Error(`Boah, da ist was kaputt: ${response.statusText}`)
+        console.error(`Error fetching project data: ${response.statusText}`);
+        throw redirect(302, '/')
     }
 
     const data: ProjectData = await response.json()

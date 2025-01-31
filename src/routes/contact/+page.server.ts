@@ -1,3 +1,4 @@
+import { redirect } from "@sveltejs/kit"
 import type { PageServerLoad } from "./$types"
 
 type ProjectDataContacts = {
@@ -18,7 +19,8 @@ export const load: PageServerLoad = async (): Promise<{ contactData: Array<Proje
     })
 
     if (!response.ok) {
-        throw new Error(`Boah, da ist was kaputt: ${response.statusText}`)
+        console.error(`Error fetching project data: ${response.statusText}`);
+        throw redirect(302, '/')
     }
 
     const responseData: Array<any> = await response.json();
