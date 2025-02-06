@@ -1,6 +1,8 @@
 <script lang="ts">
+    import { TreeView, TreeViewItem } from "@skeletonlabs/skeleton";
     import type { PageServerData } from "./$types"
     export let data: PageServerData
+    console.log(data.projectData.versions);
 </script>
 
 <div class="h-auto w-auto text-left md:mx-16">
@@ -24,12 +26,32 @@
                     Altersfreigabe:  {data.projectData.usk}<br /><br />
                 </div>
                 <div class="flex w-1/2 items-center justify-center md:h-63">
-                    <img src={data.projectData.pimage} style="width: 200px; border-radius: 10%;" />
+                    <img src={data.projectData.pimage} alt={data.projectData.title} style="width: 200px; border-radius: 10%;" />
                 </div>
             </div>
             <div>
                 {data.projectData.description}
             </div>
+        </div>
+        <div>
+            {#if data.projectData.versions}
+            {#each data.projectData.versions as version}
+                <div class="md:py-3">
+                    <TreeView class="variant-ghost py-3 rounded-xl ">
+                        <TreeViewItem>
+                            {version.vname}
+                            <svelte:fragment slot="children">
+                                <TreeViewItem>
+                                    {version.vtext}
+                                </TreeViewItem>
+                            </svelte:fragment>
+                        </TreeViewItem>
+                    </TreeView>
+                </div>
+            {/each}
+            {:else}
+                <p></p>
+            {/if}
         </div>
     </div>
 </div>

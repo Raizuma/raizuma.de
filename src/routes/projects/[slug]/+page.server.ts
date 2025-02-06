@@ -11,6 +11,7 @@ type ProjectData = {
     usk: string;
     pimage: string;
     description: string;
+    versions: Array<JSON>;
 }
 
 export const load: PageServerLoad = async ({ params  }): Promise<{ projectData: ProjectData }> => {
