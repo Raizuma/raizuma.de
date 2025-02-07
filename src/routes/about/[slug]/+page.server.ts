@@ -1,19 +1,14 @@
 import { redirect } from "@sveltejs/kit";
 import type { PageServerLoad } from "./$types"
 
-type ProjectData = {
-    title: string;
-    downloadlink: string;
-    developer: string;
-    publisher: string;
-    date: string;
-    orglanguage: string;
-    usk: string;
+type ProjectDataPerson = {
+    pname: string;
     pimage: string;
-    description: string;
+    palt: string,
+    pdescription: string;
 }
 
-export const load: PageServerLoad = async ({ params  }): Promise<{ projectData: ProjectData }> => {
+export const load: PageServerLoad = async ({ params  }): Promise<{ projectDataPerson: ProjectDataPerson }> => {
     console.log(params.slug);
     const slug = params.slug;
 
@@ -29,6 +24,6 @@ export const load: PageServerLoad = async ({ params  }): Promise<{ projectData: 
     const data: ProjectData = await response.json()
 
     return {
-        projectData: data
+        projectDataPerson: data
     }
 }
