@@ -11,7 +11,7 @@
         {#each projects as project, index}
             <button on:click={() => goto("/projects/" + project.pname)} class="card card-hover block variant-ghost-surface md:mb-10" style="width: 250px;">
                 <header class="card-header">
-                    <enhanced:img src={project.pimg || ""} alt={project.palt} style="border-radius: 10%;" />
+                    <enhanced:img src={`/src/lib/images/${project.pimg}` || ""} alt={project.palt} style="border-radius: 10%;" />
                     </header>
                     <section class=" p-4 font-bold break-all {project.ptitle.length > 9 ? 'text-4xl' : 'text-5xl'}">{project.ptitle}</section>
             </button>
