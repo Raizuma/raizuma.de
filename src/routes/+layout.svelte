@@ -5,6 +5,7 @@
     import PageTransition from "$components/PageTransition.svelte"
     import { darkmode } from "$stores/darkmode"
     import { theme } from "$stores/theme"
+    import { goto } from "$app/navigation";
 </script>
 
 <custom-theming-element data-theme="{$theme}" class="{$darkmode ? 'dark' : 'light'}">
@@ -17,7 +18,11 @@
                         <slot />
                     </div>
                     <div class="mt-3 w-full h-auto flex justify-end items-center">
-                        <div>&copy; 2024 by Raizuma. All rights reserved.</div>
+                        <div>
+                            &copy; 2024 von Raizuma. Alle Rechte vorberhalten.
+                                <br>
+                            <button class="ml-1 rounded-xl border px-4 hover:bg-black/25" on:click={() => goto("/legal")}>Rechtliche Inhalte</button>
+                        </div>
                     </div>
                 </div>
             </div>
