@@ -2,12 +2,7 @@
 .vscode/**
 .idea/**
 
-# Folders
-node_modules/**
-.svelte-kit/**
-
 # Files
-package-lock.json
 yarn.lock
 pnpm-lock.yaml
 bun.lockb
