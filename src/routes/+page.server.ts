@@ -20,28 +20,23 @@ type ProjectDataNewsFeed = {
 }
 
 export const load: PageServerLoad = async ({ fetch }) => {
-    try{
-        const host = getHost();
+    const host = getHost();
 
-        const response: Response = await fetch(`https://api.raizuma.de/`, { 
-            method: "GET"
-        });
-    
-        if (!response.ok) {
-            console.error(`Error fetching project data: ${response.statusText}`);
-            throw redirect(302, '/');
-        }
-    
-        const responseData: Array<Array<any>> = await response.json();
-        const dataNewProjects: Array<ProjectDataNewProjects> = responseData[0];
-        const dataNewsFeed: Array<ProjectDataNewsFeed> = responseData[1];
-        
-        return {
-            projectDataNewProjects: dataNewProjects,
-            projectDataNewsFeed: dataNewsFeed
-        }
+    const response: Response = await fetch(`https://dummyjson.com/test`, { 
+        method: "GET"
+    });
+
+    if (!response.ok) {
+        console.error(`Error fetching project data: ${response.statusText}`);
+        throw redirect(302, '/');
     }
-    catch(error){
-        console.log(error);
+
+    const responseData: Array<Array<any>> = await response.json();
+    const dataNewProjects: Array<ProjectDataNewProjects> = responseData[0];
+    const dataNewsFeed: Array<ProjectDataNewsFeed> = responseData[1];
+    
+    return {
+        projectDataNewProjects: dataNewProjects,
+        projectDataNewsFeed: dataNewsFeed
     }
 }
