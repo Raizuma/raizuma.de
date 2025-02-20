@@ -13,7 +13,7 @@ export default defineConfig(({ mode }) => {
     const serverConfig: CommonServerOptions = {
         // @ts-ignore
         https: true,
-        host: "0.0.0.0",
+        host: currentHost,
         port: 3000,
         strictPort: true,
         proxy: {}
