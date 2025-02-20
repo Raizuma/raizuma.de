@@ -1,7 +1,7 @@
 FROM node:21-alpine
 WORKDIR /app
 
-RUN npm init
+RUN npm init -y
 RUN npm install
 
 COPY . .
