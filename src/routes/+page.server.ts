@@ -1,4 +1,5 @@
 // +page.server.ts (or +page.server.js)
+/*
 import { redirect } from "@sveltejs/kit"
 import type { PageServerLoad } from "./$types"
 import { getHost } from "../../vite.config"
@@ -39,4 +40,4 @@ export const load: PageServerLoad = async ({ fetch }) => {
         projectDataNewProjects: dataNewProjects,
         projectDataNewsFeed: dataNewsFeed
     }
-}
+}*/

@@ -1,9 +1,9 @@
 <script lang="ts">
-    import { Avatar } from "@skeletonlabs/skeleton"
+    //import { Avatar } from "@skeletonlabs/skeleton"
     import type { PageServerData } from "./$types"
-    export let data: PageServerData;
-    const newProjects = data.projectDataNewProjects;
-    const newsFeed = data.projectDataNewsFeed;
+    //export let data: PageServerData;
+    //const newProjects = data.projectDataNewProjects;
+    //const newsFeed = data.projectDataNewsFeed;
 </script>
 <div>
     <div class="text-4xl text-center">Raizuma - So schnell wie der Blitz</div>
