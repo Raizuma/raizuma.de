@@ -20,9 +20,11 @@ type ProjectDataNewsFeed = {
 }
 
 export const load: PageServerLoad = async ({ fetch }) => {
+
+    try {
     const host = getHost();
 
-    const response: Response = await fetch(`https://dummyjson.com/test`, { 
+    const response: Response = await fetch(`http://api.raizuma.de/`, { 
         method: "GET"
     });
 
@@ -39,4 +41,8 @@ export const load: PageServerLoad = async ({ fetch }) => {
         projectDataNewProjects: dataNewProjects,
         projectDataNewsFeed: dataNewsFeed
     }
+} catch (error) {
+    console.error('Error fetching data:', error);
+    return { error: 'An error occurred while fetching data' };
+}
 }
