@@ -14,7 +14,7 @@ export default defineConfig(({ mode }) => {
         // @ts-ignore
         https: true,
         host: currentHost,
-        port: 3000,
+        port: 3002,
         strictPort: true,
         proxy: {}
     }
