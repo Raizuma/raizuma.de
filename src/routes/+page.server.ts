@@ -26,8 +26,6 @@ export const load: PageServerLoad = async ({ fetch }) => {
         method: "GET"
     });
 
-    console.log(response);
-
     if (!response.ok) {
         console.error(`Error fetching project data: ${response.statusText}`);
         throw redirect(302, '/');
