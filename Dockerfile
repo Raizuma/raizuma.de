@@ -8,4 +8,4 @@ COPY . .
 RUN npm run build
 
 EXPOSE 3000
-CMD ["npm", "start"]
+CMD ["node", "--max-old-space-size=4096", "node", "start"]
