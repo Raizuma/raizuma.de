@@ -1,18 +1,17 @@
 <script lang="ts">
-    //import { Avatar } from "@skeletonlabs/skeleton"
+    import { Avatar } from "@skeletonlabs/skeleton"
     import type { PageServerData } from "./$types"
-    //export let data: PageServerData;
-    //const newProjects = data.projectDataNewProjects;
-    //const newsFeed = data.projectDataNewsFeed;
+    export let data: PageServerData;
+    const newProjects = data.projectDataNewProjects;
+    const newsFeed = data.projectDataNewsFeed;
 </script>
 <div>
     <div class="text-4xl text-center">Raizuma - So schnell wie der Blitz</div>
     <div class="text-xl text-center">Das Team der Ewigkeit und deutschen Übersetzungen</div>
 </div>
-<!--
 <div>
     <div class="text-4xl text-center">Aktuelle Projekte</div>
-     Letzte Projekte 
+    <!-- Letzte Projekte -->
     <div class="flex flex-col md:flex-row text-center content-center items-center justify-around p-4">
         {#if newProjects}
             {#each newProjects.slice(0,3) as project}
@@ -31,7 +30,7 @@
 </div>
 <div>
     <div class="text-4xl text-center">News Feed</div>
-     Social Media Feed 
+    <!-- Social Media Feed -->
      <div class="flex flex-col gap-5 p-4">
         {#if newsFeed}
             {#each newsFeed as news}
@@ -51,4 +50,3 @@
         {/if}
      </div>
 </div>
--->
