@@ -2,6 +2,7 @@
     import { Avatar } from "@skeletonlabs/skeleton"
     import type { PageServerData } from "./$types"
     export let data: PageServerData;
+    console.log(data);
     const newProjects = data.projectDataNewProjects;
     const newsFeed = data.projectDataNewsFeed;
 </script>

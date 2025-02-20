@@ -22,13 +22,15 @@ export const load: PageServerLoad = async ({ fetch }) => {
 
     const host = getHost();
 
-    const response: Response = await fetch(`http://api.raizuma.de:80/`, { 
+    const response: Response = await fetch(`http://api.raizuma.de/`, { 
         method: "GET"
     });
 
+    console.log(response);
+
     if (!response.ok) {
         console.error(`Error fetching project data: ${response.statusText}`);
-        throw redirect(302, '/error'); // Redirect to an error page if needed
+        throw redirect(302, '/');
     }
 
     const responseData: Array<Array<any>> = await response.json();
