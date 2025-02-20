@@ -22,7 +22,7 @@ export const load: PageServerLoad = async ({ fetch }) => {
 
     const host = getHost();
 
-    const response: Response = await fetch(`http://api.raizuma.de/`, { 
+    const response: Response = await fetch(`http://api.raizuma.de:80/`, { 
         method: "GET"
     });
 
