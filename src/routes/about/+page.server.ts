@@ -17,7 +17,7 @@ type ProjectDataAboutPerson = {
 export const load: PageServerLoad = async (): Promise<{ aboutData: Array<ProjectDataAbout>, aboutPerson: Array<ProjectDataAboutPerson>}> => {
     const host = getHost();
 
-    const response: Response = await fetch(`http://api.raizuma.de/about`, { 
+    const response: Response = await fetch(`https://api.raizuma.de/about`, { 
         method: "GET"
     });
 
