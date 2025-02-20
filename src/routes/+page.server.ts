@@ -1,5 +1,5 @@
 // +page.server.ts (or +page.server.js)
-/*
+
 import { redirect } from "@sveltejs/kit"
 import type { PageServerLoad } from "./$types"
 import { getHost } from "../../vite.config"
@@ -21,9 +21,9 @@ type ProjectDataNewsFeed = {
 
 export const load: PageServerLoad = async ({ fetch }) => {
 
-    const host = getHost();
+    //const host = getHost();
 
-    const response: Response = await fetch(`http://api.raizuma.de/`, { 
+    const response: Response = await fetch(`https://api.raizuma.de/`, { 
         method: "GET"
     });
 
@@ -40,4 +40,4 @@ export const load: PageServerLoad = async ({ fetch }) => {
         projectDataNewProjects: dataNewProjects,
         projectDataNewsFeed: dataNewsFeed
     }
-}*/
+}
