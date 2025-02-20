@@ -1,17 +1,15 @@
 <script lang="ts">
     import { page } from "$app/stores"
-    import { fly } from "svelte/transition"
+    import { fade } from "svelte/transition"
 
-    const duration: number = 400 // ms
-    const delay: number = 400 // ms
-    const x: number = -75 // px
-    const y: number = 0 // px
+    const duration: number = 250 // ms
+    const delay: number = 250 // ms
 </script>
 
 {#key $page.url}
     <div
-        in:fly={{ x: x, y: y, duration: duration, delay: delay }}
-        out:fly={{ x: x, y: y, duration: duration }}
+        in:fade={{duration: duration, delay: delay}}
+        out:fade={{ duration: duration}}
     >
         <slot />
     </div>

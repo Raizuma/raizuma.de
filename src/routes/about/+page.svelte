@@ -1,15 +1,36 @@
 <script lang="ts">
-    import { onMount } from 'svelte'
+    import { goto } from "$app/navigation";
+    import type { PageServerData } from "./$types";
+    export let data: PageServerData;
+    const about = data.aboutData;
+    const persons = data.aboutPerson;
 </script>
 
-<div class="mx-8 mb-4 flex h-auto w-auto items-center justify-center rounded-xl bg-slate-800/90 text-2xl md:mx-16 lg:text-4xl">Über uns</div>
+<div class="mx-8 mb-4 flex h-auto w-auto items-center justify-center rounded-xl bg-slate-800/90 text-2xl md:mx-16 lg:text-4xl">Raizuma</div>
 <div class="text-1 mx-8 md:mx-16 lg:text-2xl">
-    Unser Ziel bei Raizuma ist es, mit unseren Übersetzungen verschiedenste Videospiele für deutsche Spieler zugänglicher zu machen. Wir nehmen uns die Zeit für Optimierungen jeder Zeile und jedes Dialogfeldes,
-    um den Charme und die Atmosphäre des Originalspiels beizubehalten.<br /><br />
+    {#if about.ptext}
+        {#each about.ptext as text}
+            {text}
+            <br><br>
+        {/each}
+    {:else}
+        <p></p>
+    {/if}
+</div>
 
-    Das Team besteht größtenteils aus noch lernenden Personen. Jedoch sichern wir für den Spaß der Spieler die höchstmögliche Qualität. Während des Übersetzungsprozesses lernen wir kontinuierlich dazu und
-    lassen unsere Leidenschaft in jedes einzelne Projekt einfließen.<br /><br />
 
-    Vielen Dank, dass Ihr uns auf dieser aufregenden Reise begleitet. Wir freuen uns, unsere Leidenschaft für Spiele wie Yo-kai Watch und Deltarune sowie andere Spiele mit Euch zu teilen und zu sehen,
-    dass Ihr mit den Übersetzungen Spaß habt. Eine Fremdsprache sollte niemals ein Hindernis für eine angenehme Spielerfahrung sein und wir stellen sicher, dass Eure Spielerfahrung so angenehm wie möglich ist.
+<div class="mx-8 mb-4 flex h-auto w-auto items-center justify-center rounded-xl bg-slate-800/90 text-2xl md:mx-16 lg:text-4xl">Teammitglieder</div>
+<div class="text-1 mx-8 md:mx-16 lg:text-2xl flex md:justify-between justify-center flex-wrap">
+    {#if persons}
+        {#each persons as person}
+            <button on:click={() => goto("/about/" + person.pname)} class="card card-hover block variant-ghost-surface md:mb-10" style="width: 150px;">
+                <header class="card-header">
+                    <enhanced:img src= {`/src/lib/images/${person.pimg}` || ""} alt={person.palt} style="border-radius: 10%;" />
+                    </header>
+                    <section class="font-bold break-all text-2xl mt-1">{person.ptitle}</section>
+            </button>
+        {/each}
+    {:else}
+        <p></p>
+    {/if}
 </div>

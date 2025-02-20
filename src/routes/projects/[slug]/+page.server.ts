@@ -1,4 +1,6 @@
+import { redirect } from "@sveltejs/kit";
 import type { PageServerLoad } from "./$types"
+import { getHost } from "../../../../vite.config";
 
 type ProjectData = {
     title: string;
@@ -10,17 +12,20 @@ type ProjectData = {
     usk: string;
     pimage: string;
     description: string;
+    versions: Array<JSON>;
 }
 
-export const load: PageServerLoad = async ({ slug  }): Promise<{ projectData: ProjectData }> => {
-    console.log(slug)
+export const load: PageServerLoad = async ({ params  }): Promise<{ projectData: ProjectData }> => {
+    const slug = params.slug;
+    const host = getHost();
 
-    const response: Response = await fetch(`http://api.raizuma.local:3000/projects/${slug}`, {
+    const response: Response = await fetch(`http://${host}:3001/projects/${slug}`, { 
         method: "GET"
-    })
+    });
 
     if (!response.ok) {
-        throw new Error(`Boah, da ist was kaputt: ${response.statusText}`)
+        console.error(`Error fetching project data: ${response.statusText}`);
+        throw redirect(302, '/')
     }
 
     const data: ProjectData = await response.json()
@@ -28,4 +33,6 @@ export const load: PageServerLoad = async ({ slug  }): Promise<{ projectData: Pr
     return {
         projectData: data
     }
+
+
 }
