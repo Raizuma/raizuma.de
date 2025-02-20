@@ -5,7 +5,7 @@ import { enhancedImages } from "@sveltejs/enhanced-img"
 import mkcert from "vite-plugin-mkcert"
 
 const currentMode = process.env.NODE_ENV || 'development'; 
-const currentHost = (currentMode === "production") ? "0.0.0.0" : "127.0.0.1";
+const currentHost = (currentMode === "production") ? "217.160.3.82" : "127.0.0.1";
 
 export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, process.cwd())
