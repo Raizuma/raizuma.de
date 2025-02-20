@@ -19,7 +19,7 @@ export const load: PageServerLoad = async ({ params  }): Promise<{ projectData: 
     const slug = params.slug;
     const host = getHost();
 
-    const response: Response = await fetch(`http://${host}:3001/projects/${slug}`, { 
+    const response: Response = await fetch(`http://api.raizuma.de/projects/${slug}`, { 
         method: "GET"
     });
 
