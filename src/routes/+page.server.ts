@@ -39,13 +39,11 @@ export const load: PageServerLoad = async ({ fetch }) => {
         const responseData: Array<Array<any>> = await response.json();
         const dataNewProjects: Array<ProjectDataNewProjects> = responseData[0];
         const dataNewsFeed: Array<ProjectDataNewsFeed> = responseData[1];
-
-        return console.log(response);
-        /*
+        
         return {
             projectDataNewProjects: dataNewProjects,
             projectDataNewsFeed: dataNewsFeed
-        }*/
+        }
     }
     catch(error){
         console.error(error);
