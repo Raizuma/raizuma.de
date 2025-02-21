@@ -29,20 +29,19 @@ export const load: PageServerLoad = async ({ fetch }) => {
             method: "GET"
         });
         
-    
+        /*
         if (!response.ok) {
             console.error(`Error fetching project data: ${response.statusText}`);
             throw redirect(302, '/');
-        }
-
-        return console.log(response);
-
-        /*
+        }*/
+        
     
         const responseData: Array<Array<any>> = await response.json();
         const dataNewProjects: Array<ProjectDataNewProjects> = responseData[0];
         const dataNewsFeed: Array<ProjectDataNewsFeed> = responseData[1];
-        
+
+        return console.log(response);
+        /*
         return {
             projectDataNewProjects: dataNewProjects,
             projectDataNewsFeed: dataNewsFeed
