@@ -1,5 +1,4 @@
 
-<!--
 <script lang="ts">
     import { Avatar } from "@skeletonlabs/skeleton"
     import type { PageServerData } from "./$types"
@@ -7,6 +6,8 @@
     const newProjects = data.projectDataNewProjects;
     const newsFeed = data.projectDataNewsFeed;
 </script>
+
+<!--
 <div>
     <div class="text-4xl text-center">Raizuma - So schnell wie der Blitz</div>
     <div class="text-xl text-center">Das Team der Ewigkeit und deutschen Übersetzungen</div>

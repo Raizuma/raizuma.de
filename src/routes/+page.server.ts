@@ -28,6 +28,8 @@ export const load: PageServerLoad = async ({ fetch }) => {
         const response: Response = await fetch(`http://172.19.0.3:3001/`, { 
             method: "GET"
         });
+
+        return console.log(response);
         /*
     
         if (!response.ok) {
@@ -45,7 +47,7 @@ export const load: PageServerLoad = async ({ fetch }) => {
         }*/
     }
     catch(error){
-        console.error(error);
+        return console.error(error);
         //return {error: error}
     }
 }
