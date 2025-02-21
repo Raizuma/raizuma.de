@@ -22,21 +22,27 @@ type ProjectDataNewsFeed = {
 export const load: PageServerLoad = async ({ fetch }) => {
     const host = getHost();
 
-    const response: Response = await fetch(`http://172.19.0.3:3001/`, { 
-        method: "GET"
-    });
-
-    if (!response.ok) {
-        console.error(`Error fetching project data: ${response.statusText}`);
-        throw redirect(302, '/');
-    }
-
-    const responseData: Array<Array<any>> = await response.json();
-    const dataNewProjects: Array<ProjectDataNewProjects> = responseData[0];
-    const dataNewsFeed: Array<ProjectDataNewsFeed> = responseData[1];
+    try {
+        const response: Response = await fetch(`http://172.19.0.3:3001/`, { 
+            method: "GET"
+        });
     
-    return {
-        projectDataNewProjects: dataNewProjects,
-        projectDataNewsFeed: dataNewsFeed
+        if (!response.ok) {
+            console.error(`Error fetching project data: ${response.statusText}`);
+            throw redirect(302, '/');
+        }
+    
+        const responseData: Array<Array<any>> = await response.json();
+        const dataNewProjects: Array<ProjectDataNewProjects> = responseData[0];
+        const dataNewsFeed: Array<ProjectDataNewsFeed> = responseData[1];
+        
+        return {
+            projectDataNewProjects: dataNewProjects,
+            projectDataNewsFeed: dataNewsFeed
+        }
+    }
+    catch(error){
+        console.error(error);
+        return {error: error}
     }
 }

@@ -4,7 +4,12 @@
     export let data: PageServerData;
     const newProjects = data.projectDataNewProjects;
     const newsFeed = data.projectDataNewsFeed;
+    export let error;
 </script>
+
+{#if error}
+    <p>Error: {error}</p>
+{:else}
 <div>
     <div class="text-4xl text-center">Raizuma - So schnell wie der Blitz</div>
     <div class="text-xl text-center">Das Team der Ewigkeit und deutschen Übersetzungen</div>
@@ -50,3 +55,4 @@
         {/if}
      </div>
 </div>
+{/if}
