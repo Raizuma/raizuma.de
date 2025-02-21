@@ -29,7 +29,7 @@ export const load: PageServerLoad = async ({ fetch }) => {
             method: "GET"
         });
         
-        /*
+        
         if (!response.ok) {
             console.error(`Error fetching project data: ${response.statusText}`);
             throw redirect(302, '/');
@@ -41,13 +41,10 @@ export const load: PageServerLoad = async ({ fetch }) => {
         const dataNewsFeed: Array<ProjectDataNewsFeed> = responseData[1];
         
         return {
-            response
-
-            
             projectDataNewProjects: dataNewProjects,
             projectDataNewsFeed: dataNewsFeed
             
-        }*/
+        }
     }
     catch(error){
         console.error(error);
