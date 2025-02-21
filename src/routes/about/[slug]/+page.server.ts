@@ -1,6 +1,6 @@
 import { redirect } from "@sveltejs/kit";
 import type { PageServerLoad } from "./$types"
-import { getHost } from "../../../../vite.config";
+
 
 type ProjectDataPerson = {
     pname: string;
@@ -11,9 +11,8 @@ type ProjectDataPerson = {
 
 export const load: PageServerLoad = async ({ params  }): Promise<{ projectDataPerson: ProjectDataPerson }> => {
     const slug = params.slug;
-    const host = getHost();
 
-    const response: Response = await fetch(`http://${host}:3001/about/${slug}`, { 
+    const response: Response = await fetch(`http://172.19.0.3:3001/about/${slug}`, { 
         method: "GET"
     });
 
