@@ -7,6 +7,8 @@
     const newsFeed = data.projectDataNewsFeed;
 </script>
 
+
+
 <!--
 <div>
     <div class="text-4xl text-center">Raizuma - So schnell wie der Blitz</div>

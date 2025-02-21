@@ -28,14 +28,16 @@ export const load: PageServerLoad = async ({ fetch }) => {
         const response: Response = await fetch(`http://172.19.0.3:3001/`, { 
             method: "GET"
         });
-
-        return console.log(response);
-        /*
+        
     
         if (!response.ok) {
             console.error(`Error fetching project data: ${response.statusText}`);
             throw redirect(302, '/');
         }
+
+        return console.log(response);
+
+        /*
     
         const responseData: Array<Array<any>> = await response.json();
         const dataNewProjects: Array<ProjectDataNewProjects> = responseData[0];
@@ -47,7 +49,7 @@ export const load: PageServerLoad = async ({ fetch }) => {
         }*/
     }
     catch(error){
-        return console.error(error);
-        //return {error: error}
+        console.error(error);
+        return {error: error}
     }
 }
