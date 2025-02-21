@@ -13,7 +13,7 @@ export const load: PageServerLoad = async (): Promise<{ projectData: Array<Proje
     
     const host = getHost();
 
-    const response: Response = await fetch(`http://${host}:3001/projects`, { 
+    const response: Response = await fetch(`http://172.19.0.3:3001/projects`, { 
         method: "GET"
     });
 
