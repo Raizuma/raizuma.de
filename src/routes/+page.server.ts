@@ -22,7 +22,9 @@ type ProjectDataNewsFeed = {
 export const load: PageServerLoad = async ({ fetch }) => {
     //const host = getHost();
 
-    try {
+    try { 
+
+        /*
         const response: Response = await fetch(`http://172.19.0.3:3001/`, { 
             method: "GET"
         });
@@ -39,7 +41,7 @@ export const load: PageServerLoad = async ({ fetch }) => {
         return {
             projectDataNewProjects: dataNewProjects,
             projectDataNewsFeed: dataNewsFeed
-        }
+        }*/
     }
     catch(error){
         console.error(error);
