@@ -17,7 +17,7 @@ type ProjectData = {
 export const load: PageServerLoad = async ({ params  }): Promise<{ projectData: ProjectData }> => {
     const slug = params.slug;
 
-    const response: Response = await fetch(`http://172.19.0.3:3001//projects/${slug}`, { 
+    const response: Response = await fetch(`http://172.19.0.3:3001/projects/${slug}`, { 
         method: "GET"
     });
 
