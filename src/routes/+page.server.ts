@@ -24,10 +24,11 @@ export const load: PageServerLoad = async ({ fetch }) => {
 
     try { 
 
-        /*
+        
         const response: Response = await fetch(`http://172.19.0.3:3001/`, { 
             method: "GET"
         });
+        /*
     
         if (!response.ok) {
             console.error(`Error fetching project data: ${response.statusText}`);
@@ -45,6 +46,6 @@ export const load: PageServerLoad = async ({ fetch }) => {
     }
     catch(error){
         console.error(error);
-        return {error: error}
+        //return {error: error}
     }
 }
