@@ -16,7 +16,7 @@ type ProjectDataContactsList = {
 export const load: PageServerLoad = async (): Promise<{ contactData: Array<ProjectDataContacts> }> => {
     const host = getHost();
 
-    const response: Response = await fetch(`https://api.raizuma.de/contact`, { 
+    const response: Response = await fetch(`http://${host}:3001/contact`, { 
         method: "GET"
     });
 

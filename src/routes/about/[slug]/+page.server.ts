@@ -13,7 +13,7 @@ export const load: PageServerLoad = async ({ params  }): Promise<{ projectDataPe
     const slug = params.slug;
     const host = getHost();
 
-    const response: Response = await fetch(`https://api.raizuma.de/about/${slug}`, { 
+    const response: Response = await fetch(`http://${host}:3001/about/${slug}`, { 
         method: "GET"
     });
 

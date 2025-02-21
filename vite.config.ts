@@ -6,6 +6,7 @@ import mkcert from "vite-plugin-mkcert"
 
 const currentMode = process.env.NODE_ENV || 'development'; 
 const currentHost = (currentMode === "production") ? "0.0.0.0" : "127.0.0.1";
+const cuurentApi = (currentMode === "production") ? "172.19.0.3" : "127.0.0.1";
 
 export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, process.cwd())
@@ -28,5 +29,5 @@ export default defineConfig(({ mode }) => {
 
 
 export const getHost = () => {
-    return currentHost;
+    return cuurentApi;
 };

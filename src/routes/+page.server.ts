@@ -2,7 +2,7 @@
 
 import { redirect } from "@sveltejs/kit"
 import type { PageServerLoad } from "./$types"
-//import { getHost } from "../../vite.config"
+import { getHost } from "../../vite.config"
 
 type ProjectDataNewProjects = {
     plink: string,
@@ -20,12 +20,12 @@ type ProjectDataNewsFeed = {
 }
 
 export const load: PageServerLoad = async ({ fetch }) => {
-    //const host = getHost();
+    const host = getHost();
 
     try { 
 
         
-        const response: Response = await fetch(`http://172.19.0.3:3001/`, { 
+        const response: Response = await fetch(`http://${host}:3001/`, { 
             method: "GET"
         });
         
