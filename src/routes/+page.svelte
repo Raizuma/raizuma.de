@@ -7,9 +7,12 @@
     const newsFeed = data.projectDataNewsFeed;
 */
     export let response: Response;
-</script>
 
-<p>{response}</p>
+    $: if (response) {
+        console.log("Response:", response);
+    }
+    console.log("Meow");
+</script>
 
 <!--
 <div>
