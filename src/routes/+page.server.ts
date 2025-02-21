@@ -22,7 +22,7 @@ type ProjectDataNewsFeed = {
 export const load: PageServerLoad = async ({ fetch }) => {
     const host = getHost();
 
-    const response: Response = await fetch(`https://api.raizuma.de/`, { 
+    const response: Response = await fetch(`http://api.raizuma.de-website:3001/`, { 
         method: "GET"
     });
 
