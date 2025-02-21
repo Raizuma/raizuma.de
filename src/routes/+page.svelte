@@ -6,11 +6,11 @@
     const newProjects = data.projectDataNewProjects;
     const newsFeed = data.projectDataNewsFeed;
 */
-    export let response: Response;
+    /*export let response: Response;
 
     $: if (response) {
         console.log("Response:", response);
-    }
+    }*/
     console.log("Meow");
 </script>
 
