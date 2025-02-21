@@ -7,16 +7,18 @@
     export let error;
 </script>
 
-{#if error}
-    <p>Error: {error}</p>
-{:else}
+
 <div>
     <div class="text-4xl text-center">Raizuma - So schnell wie der Blitz</div>
     <div class="text-xl text-center">Das Team der Ewigkeit und deutschen Übersetzungen</div>
 </div>
+
+<p>{error}</p>
+
+<!--
 <div>
     <div class="text-4xl text-center">Aktuelle Projekte</div>
-    <!-- Letzte Projekte -->
+    
     <div class="flex flex-col md:flex-row text-center content-center items-center justify-around p-4">
         {#if newProjects}
             {#each newProjects.slice(0,3) as project}
@@ -35,7 +37,7 @@
 </div>
 <div>
     <div class="text-4xl text-center">News Feed</div>
-    <!-- Social Media Feed -->
+    
      <div class="flex flex-col gap-5 p-4">
         {#if newsFeed}
             {#each newsFeed as news}
@@ -55,4 +57,4 @@
         {/if}
      </div>
 </div>
-{/if}
+-->
