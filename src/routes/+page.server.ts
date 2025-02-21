@@ -25,7 +25,7 @@ export const load: PageServerLoad = async ({ fetch }) => {
     try { 
 
         
-        const response: Response = await fetch(`172.19.0.3:3001`, { 
+        const response: Response = await fetch(`http://172.19.0.3:3001/`, { 
             method: "GET"
         });
         
