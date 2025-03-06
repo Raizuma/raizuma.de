@@ -25,7 +25,7 @@
         {#each persons as person}
             <button on:click={() => goto("/about/" + person.pname)} class="card card-hover block variant-ghost-surface md:mb-10" style="width: 150px;">
                 <header class="card-header">
-                    <enhanced:img src= {`/src/lib/images/${person.pimg}` || ""} alt={person.palt} style="border-radius: 10%;" />
+                    <enhanced:img src= "data:image/png;base64,{person.pimg}" alt={person.palt} style="border-radius: 10%;" />
                     </header>
                     <section class="font-bold break-all text-2xl mt-1">{person.ptitle}</section>
             </button>

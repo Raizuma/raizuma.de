@@ -36,7 +36,7 @@
                     </div>
                     <div class="flex w-1/2 items-center justify-center md:h-63">
                        <enhanced:img
-                            src={`/src/lib/images/${data.projectData.pimage}` || ""}
+                            src="data:image/png;base64,{data.projectData.pimage}"
                             alt={data.projectData.title}
                             style="width: 200px; border-radius: 10%;"
                         />
