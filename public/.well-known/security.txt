@@ -1,0 +1,5 @@
+Contact: mailto:info@raizuma.de
+Expires: 2027-01-01T12:00:00Z
+Canonical: https://raizuma.de/.well-known/security.txt
+Preferred-Languages: en, de
+Encryption: https://raizuma.de/.well-known/pgp-publickey.txt
