@@ -14,10 +14,10 @@ concurrency:
 
 jobs:
   deploy:
-    name: Deploy to production
+    name: Build and deploy to production
     runs-on: ubuntu-latest
-    timeout-minutes: 15
-    
+    timeout-minutes: 20
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -37,34 +37,77 @@ jobs:
           mkdir -p ~/.ssh
           chmod 700 ~/.ssh
 
-          ssh-keyscan -H github.com >> ~/.ssh/known_hosts
+          # SERVER_HOST_KEY sollte beispielsweise so aussehen:
+          # [203.0.113.10]:22 ssh-ed25519 AAAAC3...
+          printf '%s\n' "$SERVER_HOST_KEY" >> ~/.ssh/known_hosts
+
           chmod 600 ~/.ssh/known_hosts
-          
-      - name: Remote Login & Deploy
+
+      - name: Build Docker image
+        env:
+          IMAGE_NAME: raizuma.de
+          IMAGE_TAG: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+
+          docker build \
+            --tag "$IMAGE_NAME:$IMAGE_TAG" \
+            --tag "$IMAGE_NAME:latest" \
+            .
+
+      - name: Export Docker image
+        env:
+          IMAGE_NAME: raizuma.de
+          IMAGE_TAG: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+
+          docker save "$IMAGE_NAME:$IMAGE_TAG" | gzip > raizuma.de.tar.gz
+
+      - name: Upload Docker image
         env:
           SERVER_IP: ${{ secrets.SERVER_IP }}
           SERVER_USER: ${{ secrets.SERVER_USER }}
-          APP_DIR: ${{ secrets.APP_DIR }}
-          SSH_DEPLOY_KEY_DIR: ${{ secrets.SSH_DEPLOY_KEY_DIR }}
-          COMMIT_SHA: ${{ github.sha }}
+          SERVER_IMAGE_DIR: ${{ secrets.SERVER_IMAGE_DIR }}
         run: |
           set -euo pipefail
-          ssh \
-            -o BatchMode=yes \
-            -o StrictHostKeyChecking=yes \
-            "$SERVER_USER@$SERVER_IP" \
-            "APP_DIR='$APP_DIR' SSH_DEPLOY_KEY_DIR='$SSH_DEPLOY_KEY_DIR' COMMIT_SHA='$COMMIT_SHA' bash -s" <<'SSHEND'
+
+          ssh "$SERVER_USER@$SERVER_IP" \
+            "mkdir -p '$SERVER_IMAGE_DIR'"
+
+          scp raizuma.de.tar.gz \
+            "$SERVER_USER@$SERVER_IP:$SERVER_IMAGE_DIR/raizuma.de.tar.gz"
+
+      - name: Load image and restart application
+        env:
+          SERVER_IP: ${{ secrets.SERVER_IP }}
+          SERVER_USER: ${{ secrets.SERVER_USER }}
+          SERVER_IMAGE_DIR: ${{ secrets.SERVER_IMAGE_DIR }}
+          APP_DIR: ${{ secrets.APP_DIR }}
+          IMAGE_NAME: raizuma.de
+          IMAGE_TAG: ${{ github.sha }}
+        run: |
           set -euo pipefail
+
+          ssh "$SERVER_USER@$SERVER_IP" \
+            "SERVER_IMAGE_DIR='$SERVER_IMAGE_DIR' \
+             APP_DIR='$APP_DIR' \
+             IMAGE_NAME='$IMAGE_NAME' \
+             IMAGE_TAG='$IMAGE_TAG' \
+             bash -s" <<'SSHEND'
+          set -euo pipefail
+
           cd "$APP_DIR"
-          if [ -d ".git" ]; then
-            echo "Repo exists. Pulling latest changes..."
-            GIT_SSH_COMMAND="ssh -i $SSH_DEPLOY_KEY_DIR"
-            git fetch --prune origin main
-            git reset --hard "$COMMIT_SHA"
-            git clean -fd
-          else
-            echo "Repo not found. Cloning into current directory..."
-            GIT_SSH_COMMAND="ssh -i $SSH_DEPLOY_KEY_DIR"
-            git clone git@github.com:Raizuma/raizuma.de.git "$APP_DIR"
-          fi
+
+          echo "Loading Docker image..."
+          gunzip -c "$SERVER_IMAGE_DIR/raizuma.de.tar.gz" | docker load
+
+          echo "Starting Docker Compose..."
+          IMAGE_TAG="$IMAGE_TAG" docker compose up -d --force-recreate
+
+          echo "Removing old Docker images..."
+          docker image prune -f
+
+          echo "Removing uploaded archive..."
+          rm -f "$SERVER_IMAGE_DIR/raizuma.de.tar.gz"
           SSHEND
