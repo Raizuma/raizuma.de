@@ -51,6 +51,7 @@ jobs:
           set -euo pipefail
 
           docker build \
+            --no-cache \
             --tag "$IMAGE_NAME:$IMAGE_TAG" \
             --tag "$IMAGE_NAME:latest" \
             .
