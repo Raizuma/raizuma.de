@@ -68,7 +68,7 @@ jobs:
           SERVER_IMAGE_DIR: ${{ secrets.SERVER_IMAGE_DIR }}
         run: |
           set -euo pipefail
-      
+          
           echo "Local archive:"
           ls -lh raizuma.de.tar.gz
       
