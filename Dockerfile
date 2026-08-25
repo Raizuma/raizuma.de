@@ -1,8 +1,9 @@
 FROM node:21-alpine
 WORKDIR /app
 
-COPY package.json ./
-RUN npm install
+COPY package.json package-lock.json ./
+
+RUN npm ci --include=optional
 
 COPY . .
 RUN npm run build
