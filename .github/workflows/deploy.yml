@@ -1,0 +1,70 @@
+name: Deploy Raizuma Web
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+concurrency:
+  group: production-deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Deploy to production
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Prepare SSH key
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Configure known hosts
+        env:
+          SERVER_IP: ${{ secrets.SERVER_IP }}
+          SERVER_HOST_KEY: ${{ secrets.SERVER_HOST_KEY }}
+        run: |
+          set -euo pipefail
+
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+
+          ssh-keyscan -H github.com >> ~/.ssh/known_hosts
+          chmod 600 ~/.ssh/known_hosts
+          
+      - name: Remote Login & Deploy
+        env:
+          SERVER_IP: ${{ secrets.SERVER_IP }}
+          SERVER_USER: ${{ secrets.SERVER_USER }}
+          APP_DIR: ${{ secrets.APP_DIR }}
+          SSH_DEPLOY_KEY_DIR: ${{ secrets.SSH_DEPLOY_KEY_DIR }}
+          COMMIT_SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          ssh \
+            -o BatchMode=yes \
+            -o StrictHostKeyChecking=yes \
+            "$SERVER_USER@$SERVER_IP" \
+            "APP_DIR='$APP_DIR' SSH_DEPLOY_KEY_DIR='$SSH_DEPLOY_KEY_DIR' COMMIT_SHA='$COMMIT_SHA' bash -s" <<'SSHEND'
+          set -euo pipefail
+          cd "$APP_DIR"
+          if [ -d ".git" ]; then
+            echo "Repo exists. Pulling latest changes..."
+            GIT_SSH_COMMAND="ssh -i $SSH_DEPLOY_KEY_DIR"
+            git fetch --prune origin main
+            git reset --hard "$COMMIT_SHA"
+            git clean -fd
+          else
+            echo "Repo not found. Cloning into current directory..."
+            GIT_SSH_COMMAND="ssh -i $SSH_DEPLOY_KEY_DIR"
+            git clone git@github.com:Raizuma/raizuma.de.git "$APP_DIR"
+          fi
+          SSHEND
