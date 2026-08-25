@@ -25,8 +25,3 @@ export default defineConfig(({ mode }) => {
         plugins: [sveltekit(), enhancedImages(), mkcert()]
     }
 })
-
-
-export const getHost = () => {
-    return currentHost;
-};

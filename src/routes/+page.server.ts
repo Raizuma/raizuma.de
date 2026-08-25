@@ -1,7 +1,8 @@
 // +page.server.ts (or +page.server.js)
+
 import { redirect } from "@sveltejs/kit"
 import type { PageServerLoad } from "./$types"
-import { getHost } from "../../vite.config"
+//import { getHost } from "../../vite.config"
 
 type ProjectDataNewProjects = {
     plink: string,
@@ -19,24 +20,34 @@ type ProjectDataNewsFeed = {
 }
 
 export const load: PageServerLoad = async ({ fetch }) => {
+    //const host = getHost();
 
-    const host = getHost();
+    try { 
 
-    const response: Response = await fetch(`http://${host}:3001/`, { 
-        method: "GET"
-    });
-
-    if (!response.ok) {
-        console.error(`Error fetching project data: ${response.statusText}`);
-        throw redirect(302, '/error'); // Redirect to an error page if needed
-    }
-
-    const responseData: Array<Array<any>> = await response.json();
-    const dataNewProjects: Array<ProjectDataNewProjects> = responseData[0];
-    const dataNewsFeed: Array<ProjectDataNewsFeed> = responseData[1];
+        
+        const response: Response = await fetch(`http://172.19.0.3:3001/`, { 
+            method: "GET"
+        });
+        
+        
+        if (!response.ok) {
+            console.error(`Error fetching project data: ${response.statusText}`);
+            throw redirect(302, '/');
+        }
+        
     
-    return {
-        projectDataNewProjects: dataNewProjects,
-        projectDataNewsFeed: dataNewsFeed
+        const responseData: Array<Array<any>> = await response.json();
+        const dataNewProjects: Array<ProjectDataNewProjects> = responseData[0];
+        const dataNewsFeed: Array<ProjectDataNewsFeed> = responseData[1];
+
+        return {
+            projectDataNewProjects: dataNewProjects,
+            projectDataNewsFeed: dataNewsFeed
+            
+        }
+    }
+    catch(error){
+        console.error(error);
+        return {error: error}
     }
 }
