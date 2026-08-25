@@ -68,12 +68,25 @@ jobs:
           SERVER_IMAGE_DIR: ${{ secrets.SERVER_IMAGE_DIR }}
         run: |
           set -euo pipefail
-
+      
+          echo "Local archive:"
+          ls -lh raizuma.de.tar.gz
+      
+          echo "Remote image directory before upload:"
           ssh "$SERVER_USER@$SERVER_IP" \
-            "mkdir -p '$SERVER_IMAGE_DIR'"
-
+            "ls -lah '$SERVER_IMAGE_DIR'"
+      
+          echo "Uploading..."
           scp raizuma.de.tar.gz \
             "$SERVER_USER@$SERVER_IP:$SERVER_IMAGE_DIR/raizuma.de.tar.gz"
+      
+          echo "Remote image directory after upload:"
+          ssh "$SERVER_USER@$SERVER_IP" \
+            "ls -lah '$SERVER_IMAGE_DIR'"
+      
+          echo "Recursive directory listing:"
+          ssh "$SERVER_USER@$SERVER_IP" \
+            "find '$SERVER_IMAGE_DIR' -maxdepth 2 -ls"
 
       - name: Load image and restart application
         env:
