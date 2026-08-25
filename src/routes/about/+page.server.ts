@@ -10,12 +10,13 @@ type ProjectDataAboutPerson = {
     pname: string,
     pimg: string,
     palt: string,
+    pposition: string,
 }
 
 
-export const load: PageServerLoad = async (): Promise<{ aboutData: Array<ProjectDataAbout>, aboutPerson: Array<ProjectDataAboutPerson>}> => {
+export const load: PageServerLoad = async (): Promise<{ aboutData: Array<ProjectDataAbout>, aboutPerson: Array<ProjectDataAboutPerson> }> => {
 
-    const response: Response = await fetch(`http://172.19.0.3:3001/about`, { 
+    const response: Response = await fetch(`http://172.19.0.3:3001/about`, {
         method: "GET"
     });
 
@@ -27,7 +28,7 @@ export const load: PageServerLoad = async (): Promise<{ aboutData: Array<Project
     const responseData: Array<Array<any>> = await response.json();
     const projectDataAbout: Array<ProjectDataAbout> = responseData[0];
     const projectDataAboutPerson: Array<ProjectDataAboutPerson> = responseData[1];
-    
+
     return {
         aboutData: projectDataAbout,
         aboutPerson: projectDataAboutPerson
